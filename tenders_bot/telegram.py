@@ -20,7 +20,7 @@ bot = telebot.TeleBot(settings.TELEGRAM_TOKEN, num_threads=TELEBOT_NUM_THREADS)
 def telegram_bot_main(thread_patch_function=None):
     if thread_patch_function is not None:
         thread_patch_function()
-    bot.infinity_polling(long_polling_timeout=5, timeout=10)
+    bot.infinity_polling(long_polling_timeout=5, timeout=10)  # запускается бот
 
 
 # ----------- State ----------- #
@@ -63,7 +63,7 @@ class NavData:
     def check(data: str) -> bool:
         return data.startswith(NavData.PREFIX)
 
-
+# Обработка команды старт
 @bot.message_handler(commands=["start"])
 def start(message):
     logger.info(f'User entered "start": {message.from_user.username}')
@@ -106,14 +106,17 @@ def send_navigation(chat_id, node):
             send_node(chat_id, node.parent_node, True)
         return
 
+# Добавляем кнопку для каждого из детей
     for child_node in child_nodes:
         nav_data = NavData(nav_to_node=child_node, direction="f")
         markup.add(telebot.types.InlineKeyboardButton(child_node.button_text, callback_data=nav_data.serialize()))
 
+# Если родитель есть, то добавляем кнопку Назад
     if node.parent_node:
         back_nav_data = NavData(nav_to_node=node.parent_node, direction="b")
         markup.add(telebot.types.InlineKeyboardButton("Назад", callback_data=back_nav_data.serialize()))
 
+# Если родитель не Рут то добавляем кнопку в Начало
         if node.parent_node != TendersConfig.root_node:
             to_root_nav_data = NavData(nav_to_node=TendersConfig.root_node, direction="r")
             markup.add(telebot.types.InlineKeyboardButton("В начало", callback_data=to_root_nav_data.serialize()))

@@ -208,7 +208,7 @@ def email_feedback(feedback: Feedback):
     str_id = ID_FORMAT.format(id=feedback.id)
     # TODO: вынести формат в файл
     feedback_str = f"""
-Пришло обращение из телеграм бота Закупки ГК Эталон.
+Пришло обращение из телеграм бота департамента тендеров и закупок.
 
 Номер обращения: {str_id}.
 Дата и время обращения: {localize(localtime(feedback.created_at))}

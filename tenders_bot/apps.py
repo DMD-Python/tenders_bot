@@ -8,7 +8,7 @@ from django.db import DatabaseError
 
 logger = logging.getLogger(__name__)
 
-
+# Класс который наследует AppConfig
 class TendersConfig(AppConfig):
     name = "tenders_bot"
     default_auto_field = "django.db.models.BigAutoField"
@@ -32,7 +32,7 @@ def start_app():
         raise
     logger.info("Started tenders_bot app")
 
-
+# Делает структуру данных дерева
 def setup_node_tree():
     from tenders_bot.models import Node
 
