@@ -8,7 +8,7 @@ from django.db import DatabaseError
 
 logger = logging.getLogger(__name__)
 
-# Класс который наследует AppConfig
+# Класс, который наследует AppConfig
 class TendersConfig(AppConfig):
     name = "tenders_bot"
     default_auto_field = "django.db.models.BigAutoField"
@@ -32,7 +32,7 @@ def start_app():
         raise
     logger.info("Started tenders_bot app")
 
-# Делает структуру данных дерева
+# Строим структуру данных дерева
 def setup_node_tree():
     from tenders_bot.models import Node
 
@@ -40,7 +40,6 @@ def setup_node_tree():
     TendersConfig.root_node = Node.objects.filter(parent_node__isnull=True).first()
     TendersConfig.root_node.save(update_fields=["path"])
     logger.info("Successfully updated node tree")
-
 
 def start_telegram_bot(*args, **kwargs):
     from tenders_bot.telegram import telegram_bot_main

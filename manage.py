@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
-import os
-import sys
+#Точка входа, основной файл скрип управления проектом Django
 
+#Импорт стандартных библиотек
+import os #для работы с переменными окружения
+import sys #для управления аргументами командной строки
 
+#устанавливаем переменную окружения, подключаем к ней файл настоек settings.py
+#обработка команд python manage.py
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tenders_bot.settings')
