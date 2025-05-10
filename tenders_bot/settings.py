@@ -1,10 +1,9 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
 from tenders_bot.settings_utils import env_or_err, try_load_env_file
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Определяет путь к корневой папке проекта Django
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Загрузка переменных окружения
