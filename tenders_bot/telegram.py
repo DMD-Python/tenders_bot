@@ -144,15 +144,14 @@ def navigate(call):
 
     send_node(call.message.chat.id, node, only_nav=nav_data.direction != "f")
 
+
 # Обработка узлов где нужно вводить данные
 # ----------- Input ----------- #
 def process_input_node(chat_id, node):
-    from tenders_bot.feedback import feedback_start, contract_template_supplier_start, contract_template_contractor_start
+    from tenders_bot.feedback import feedback_start
 
     input_functions = {
         "feedback": feedback_start,
-        "contract_template_supplier": contract_template_supplier_start,
-        "contract_template_contractor": contract_template_contractor_start,
     }
     if node.input_function in input_functions:
         user_states[chat_id].return_to_node = node
