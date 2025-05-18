@@ -17,11 +17,6 @@
 - VPS (Ubuntu 22.04)
 - Git + GitHub
 
-## 🚀 Развёртывание проекта
-
-### 1. Клонировать репозиторий
-git clone https://github.com/DMD-Python/tenders_bot.git
-cd tenders_bot
 
 
 
