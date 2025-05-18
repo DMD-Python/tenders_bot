@@ -111,8 +111,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "files")
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env_or_err("EMAIL_HOST")
 EMAIL_PORT = int(env_or_err("EMAIL_PORT", 465))
-EMAIL_USE_TLS = env_or_err("EMAIL_USE_TLS", True, True)
 EMAIL_USE_SSL = env_or_err("EMAIL_USE_SSL", False, True)
+EMAIL_USE_TLS = env_or_err("EMAIL_USE_TLS", True, True)
 EMAIL_HOST_USER = env_or_err("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = env_or_err("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = env_or_err("DEFAULT_FROM_EMAIL")
@@ -125,11 +125,12 @@ MAX_TOTAL_SIZE_MB = 15  # MB
 ID_FORMAT = "GKE-{id}"
 TELEGRAM_TOKEN = env_or_err("TELEGRAM_TOKEN")
 TELEBOT_NUM_THREADS = int(env_or_err("TELEBOT_NUM_THREADS", 10))
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Логирование
+# Логирование (поставить на INFO - уровень логирования, отключит DEBUG)
 LOG_LEVEL = "DEBUG"
 LOGGING = {
     "version": 1,
